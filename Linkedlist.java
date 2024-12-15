@@ -1,8 +1,8 @@
 public class Linkedlist {
-    node head, tail;
+    Node head, tail;
 
-    public void add(String name, String nim) {
-        node newNode = new node(name, nim);
+    public void add(String name, String nim, int jarak) {
+        Node newNode = new Node(name, nim, jarak);
         if (head == null) {
             head = tail = newNode;
         } else {
@@ -13,7 +13,7 @@ public class Linkedlist {
     }
 
     public void delete(String nim) {
-        node temp = head;
+        Node temp = head;
         while (temp != null) {
             if (temp.nim.equals(nim)) {
                 if (temp == head) {
@@ -36,11 +36,19 @@ public class Linkedlist {
     }
 
     public void printAll() {
-        node temp = head;
+        Node temp = head;
         while (temp != null) {
             temp.print();
             temp = temp.next;
         }
     }
+
+    public void display() {
+        for (Node current = head; current != null; current = current.next) {
+            System.out.println("Nama  : " + current.name);
+            System.out.println("NIM   : " + current.nim);
+            System.out.println("Jarak : " + current.jarak + " km");
+            System.out.println("================================");
+        }
+    }
 }
- 
