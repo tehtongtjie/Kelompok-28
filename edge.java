@@ -2,12 +2,12 @@ public class Edge {
     Node from;
     Node to;
     int weight;
-    Edge nextEdge;
+    Edge nextedge;
     public Edge(Node from, Node to, int weight) {
         this.from = from;
         this.to = to;
         this.weight = weight;
-        this.nextEdge = null;
+        this.nextedge = null;
     }
     public Node getFrom() {
         return this.from;
@@ -28,7 +28,7 @@ public class Edge {
         this.weight = weight;
     }
     public Edge getNextEdge() {
-        return this.nextEdge;
+        return this.nextedge;
     }
     public void setNextEdge(Edge nextEdge) {
         this.nextEdge = nextEdge;
