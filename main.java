@@ -17,6 +17,20 @@ public class main {
         System.out.println("Semua Mahasiswa:");
         list.printAll();
 
+        list.sortingJarak();
+        System.out.println("\nDaftar Mahasiswa Setelah Diurutkan Berdasarkan Jarak:");
+        list.printAll();
+
+        // Cari mahasiswa
+        String cariNim = "456";
+        Node hasilCari = list.searchingNim(cariNim);
+        System.out.println("\nHasil Pencarian Mahasiswa dengan NIM " + cariNim + ":");
+        if (hasilCari != null) {
+            hasilCari.print();
+        } else {
+            System.out.println("Mahasiswa dengan NIM " + cariNim + " tidak ditemukan.");
+        }
+
         // Hapus data
         list.delete("456");
 

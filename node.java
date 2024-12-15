@@ -13,7 +13,7 @@ public class Node {
     public void print() {
         System.out.println("Nama Mahasiswa: " + name);
         System.out.println("NIM: " + nim);
-        System.out.println("Jarak: " + jarak);
+        System.out.println("Jarak: " + jarak + " km");
         System.out.println("================================");
 
     }

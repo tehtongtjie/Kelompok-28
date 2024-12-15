@@ -43,6 +43,45 @@ public class Linkedlist {
         }
     }
 
+    public void sortingJarak() {
+        if (head == null || head.next == null) return;
+
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = head;
+            while (current.next != null) {
+                if (current.jarak > current.next.jarak) {
+                    String tempName = current.name;
+                    String tempNim = current.nim;
+                    int tempJarak = current.jarak;
+
+                    current.name = current.next.name;
+                    current.nim = current.next.nim;
+                    current.jarak = current.next.jarak;
+
+                    current.next.name = tempName;
+                    current.next.nim = tempNim;
+                    current.next.jarak = tempJarak;
+
+                    swapped = true;
+                }
+                current = current.next;
+            }
+        } while (swapped);
+    }
+
+    public Node searchingNim(String nim) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.nim.equals(nim)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
     public void display() {
         for (Node current = head; current != null; current = current.next) {
             System.out.println("Nama  : " + current.name);
