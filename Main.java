@@ -12,6 +12,9 @@ public class Main {
         list.add("Rafi", "234", 22);
         list.add("Asep", "567", 15);
         list.add("Adi", "890", 12);
+        list.add("qiqi", "334", 9);
+        list.add("intan", "775", 3);
+        list.add("yudi", "062", 25);
 
         System.out.println("Daftar Mahasiswa:");
         list.printAll();
@@ -39,13 +42,13 @@ public class Main {
         list.addEdge("890", "234", 16);
         list.addEdge("567", "890", 17);
 
-        System.out.println("\nDaftar List Edge Antar Mahasiswa");
+        System.out.println("\nDaftar Edge Antar Mahasiswa");
         list.printEdges();
         String nim = "456";
         System.out.println("\nPencarian Mahasiswa dengan NIM " + nim + ":");
-        Node hasilCari456 = list.searchingNim(nim);
-        if (hasilCari456 != null) {
-            hasilCari456.print();
+        Node HasilPencarian = list.searchingNim(nim);
+        if (HasilPencarian != null) {
+            HasilPencarian.print();
         } else {
             System.out.println("+-------------------------------------------------------+");
             System.out.println("| Mahasiswa dengan NIM " + nim + " tidak ditemukan.|");
@@ -67,7 +70,7 @@ public class Main {
         System.out.println("\nDaftar Setelah Menghapus Mahasiswa dengan NIM 456:");
         list.printAll();
 
-        System.out.println("\nDaftar List Edge Antar Mahasiswa");
+        System.out.println("\nDaftar Edge Antar Mahasiswa");
         list.printEdges();
     }
 }
