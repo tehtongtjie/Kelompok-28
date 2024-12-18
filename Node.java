@@ -1,22 +1,19 @@
 public class Node {
-    String nama;
-    String nim;
+    String name, nim;
     int jarak;
     Node prev, next;
 
-    public Node(String nama, String nim, int jarak) {
-        this.nama = nama;
+    public Node(String name, String nim, int jarak) {
+        this.name = name;
         this.nim = nim;
         this.jarak = jarak;
-
     }
 
     public void print() {
-        System.out.println("Nama Mahasiswa: " + nama);
-        System.out.println("NIM: " + nim);
-        System.out.println("Jarak: " + jarak + " km");
-        System.out.println("================================");
-
+        System.out.println("+-----------------+------------+------------+");
+        System.out.printf("| %-15s | %-10s | %-10s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)");
+        System.out.println("+-----------------+------------+------------+");
+        System.out.printf("| %-15s | %-10s | %-10d |\n", name, nim, jarak);
+        System.out.println("+-----------------+------------+------------+");
     }
 }
-
