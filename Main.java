@@ -20,6 +20,27 @@ public class Main {
         System.out.println("\nDaftar Mahasiswa Setelah Diurutkan Berdasarkan Jarak:");
         list.printAll();
 
+        // add edge
+        list.addEdge("456", "123", 1);
+        list.addEdge("123", "789", 2);
+        list.addEdge("345", "123", 3);
+        list.addEdge("123", "234", 4);
+        list.addEdge("345", "456", 5);
+        list.addEdge("567", "456", 6);
+        list.addEdge("456", "890", 7);
+        list.addEdge("789", "012", 8);
+        list.addEdge("901", "789", 9);
+        list.addEdge("901", "012", 10);
+        list.addEdge("234", "345", 11);
+        list.addEdge("678", "901", 12);
+        list.addEdge("234", "678", 13);
+        list.addEdge("567", "901", 14);
+        list.addEdge("567", "234", 15);
+        list.addEdge("890", "234", 16);
+        list.addEdge("567", "890", 17);
+
+        System.out.println("\nDaftar List Edge Antar Mahasiswa");
+        list.printEdges();
         String nim = "456";
         System.out.println("\nPencarian Mahasiswa dengan NIM " + nim + ":");
         Node hasilCari456 = list.searchingNim(nim);
@@ -45,5 +66,8 @@ public class Main {
 
         System.out.println("\nDaftar Setelah Menghapus Mahasiswa dengan NIM 456:");
         list.printAll();
+
+        System.out.println("\nDaftar List Edge Antar Mahasiswa");
+        list.printEdges();
     }
 }

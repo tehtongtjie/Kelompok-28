@@ -1,14 +1,33 @@
 public class Linkedlist {
     Node head, tail;
+    Edge edgeHead = null;
 
-    public void add(String name, String nim, int jarak) {
-        Node newNode = new Node(name, nim, jarak);
+    public void add(String nama, String nim, int jarak) {
+        Node newNode = new Node(nama, nim, jarak);
         if (head == null) {
             head = tail = newNode;
         } else {
             tail.next = newNode;
             newNode.prev = tail;
             tail = newNode;
+        }
+    }
+
+    public void addEdge(String fromNim, String toNim, int weight) {
+        Node fromNode = searchingNim(fromNim);
+        Node toNode = searchingNim(toNim);
+
+        if (fromNode != null && toNode != null) {
+            Edge newEdge = new Edge(fromNode, toNode, weight);
+            if (edgeHead == null) {
+                edgeHead = newEdge;
+            } else {
+                Edge lastEdge = edgeHead;
+                while (lastEdge.nextEdge != null) {
+                    lastEdge = lastEdge.nextEdge;
+                }
+                lastEdge.nextEdge = newEdge;
+            }
         }
     }
 
@@ -26,6 +45,23 @@ public class Linkedlist {
                 } else {
                     temp.prev.next = temp.next;
                     temp.next.prev = temp.prev;
+                }
+
+                if (edgeHead != null) {
+                    Edge prevEdge = null;
+                    Edge currentEdge = edgeHead;
+                    while (currentEdge != null) {
+                        if (currentEdge.from.nim.equals(nim) || currentEdge.to.nim.equals(nim)) {
+                            if (prevEdge == null) {
+                                edgeHead = currentEdge.nextEdge;
+                            } else {
+                                prevEdge.nextEdge = currentEdge.nextEdge;
+                            }
+                        } else {
+                            prevEdge = currentEdge;
+                        }
+                        currentEdge = currentEdge.nextEdge;
+                    }
                 }
                 System.out.println("\nPenghapusan Data Mahasiswa :");
                 System.out.println("x--------------------------------------------------------------------------------x");
@@ -46,7 +82,7 @@ public class Linkedlist {
         System.out.println("+-----------------+------------+------------+");
         Node temp = head;
         while (temp != null) {
-            System.out.printf("| %-15s | %-10s | %-10d |\n", temp.name, temp.nim, temp.jarak);
+            System.out.printf("| %-15s | %-10s | %-10d |\n", temp.nama, temp.nim, temp.jarak);
             temp = temp.next;
         }
         System.out.println("+-----------------+------------+------------+");
@@ -61,15 +97,15 @@ public class Linkedlist {
             Node current = head;
             while (current.next != null) {
                 if (current.jarak > current.next.jarak) {
-                    String tempName = current.name;
+                    String tempName = current.nama;
                     String tempNim = current.nim;
                     int tempJarak = current.jarak;
 
-                    current.name = current.next.name;
+                    current.nama = current.next.nama;
                     current.nim = current.next.nim;
                     current.jarak = current.next.jarak;
 
-                    current.next.name = tempName;
+                    current.next.nama = tempName;
                     current.next.nim = tempNim;
                     current.next.jarak = tempJarak;
 
@@ -89,5 +125,15 @@ public class Linkedlist {
             temp = temp.next;
         }
         return null;
+    }
+
+    public void printEdges() {
+        Edge tempEdge = edgeHead;
+        System.out.println("+-------------------------------------------------------+");
+        while (tempEdge != null) {
+            System.out.println(tempEdge.from.nama + " -> " + tempEdge.to.nama + " (" + tempEdge.weight + " km)");
+            tempEdge = tempEdge.nextEdge;
+        }
+        System.out.println("+-------------------------------------------------------+");
     }
 }
