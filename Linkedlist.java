@@ -129,11 +129,16 @@ public class Linkedlist {
 
     public void printEdges() {
         Edge tempEdge = edgeHead;
-        System.out.println("+-------------------------------------------------------+");
+        System.out.println("+-----------------+------------+------------+");
+        System.out.printf("| %-15s | %-10s | %-10s |\n", "Dari", "Ke", "Jarak (km)");
+        System.out.println("+-----------------+------------+------------+");
         while (tempEdge != null) {
-            System.out.println(tempEdge.from.nama + " -> " + tempEdge.to.nama + " (" + tempEdge.weight + " km)");
+            System.out.printf("| %-15s | %-11s| %-11d|\n",
+            tempEdge.from.nama,
+            tempEdge.to.nama,
+            tempEdge.weight);
             tempEdge = tempEdge.nextEdge;
         }
-        System.out.println("+-------------------------------------------------------+");
+        System.out.println("+-----------------+-------------+-----------+");
     }
-}
+}    
