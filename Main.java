@@ -59,6 +59,12 @@ public class Main {
         }
 
         list.delete("456");
+        System.out.println("\nDaftar Mahasiswa yang Dihapus (Stack):");
+        list.printStack();
+
+        System.out.println("\nMengembalikan Mahasiswa yang Terakhir Dihapus:");
+        list.popFromStack(); 
+        list.printAll();
 
         System.out.println("\nPencarian Ulang Mahasiswa dengan NIM " + nim + ":");
         Node hasilCariUlang = list.searchingNim(nim);
