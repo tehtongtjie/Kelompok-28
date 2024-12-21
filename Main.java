@@ -16,6 +16,9 @@ public class Main {
         list.add("intan", "775", 3);
         list.add("yudi", "062", 25);
 
+        System.out.println("+------------------------------------------+");
+        System.out.println("|**************SISTEM KAMPUSIN*************|");
+        System.out.println("+------------------------------------------+");
         System.out.println("Daftar Mahasiswa:");
         list.printAll();
 
@@ -57,14 +60,14 @@ public class Main {
 
         list.delete("456");
 
-         System.out.println("\nPencarian Ulang Mahasiswa dengan NIM " + nim + ":");
-         Node hasilCariUlang = list.searchingNim(nim);
-         if (hasilCariUlang != null) {
-             hasilCariUlang.print();
-         } else {
-             System.out.println("+------------------------------------------+");
-             System.out.println("| Mahasiswa dengan NIM " + nim + " tidak ditemukan |");
-             System.out.println("+------------------------------------------+");
+        System.out.println("\nPencarian Ulang Mahasiswa dengan NIM " + nim + ":");
+        Node hasilCariUlang = list.searchingNim(nim);
+        if (hasilCariUlang != null) {
+            hasilCariUlang.print();
+        } else {
+            System.out.println("+------------------------------------------+");
+            System.out.println("| Mahasiswa dengan NIM " + nim + " tidak ditemukan |");
+            System.out.println("+------------------------------------------+");
         }
 
         System.out.println("\nDaftar Setelah Menghapus Mahasiswa dengan NIM 456:");
