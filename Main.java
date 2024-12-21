@@ -2,22 +2,22 @@ public class Main {
     public static void main(String[] args) {
         Linkedlist list = new Linkedlist();
 
-        list.add("Wadis", "123", 10);
-        list.add("Irfan", "456", 25);
-        list.add("Farid", "789", 17);
-        list.add("Ocha", "012", 11);
-        list.add("Budi", "345", 5);
-        list.add("Kanda", "678", 20);
-        list.add("Rayan", "901", 8);
-        list.add("Rafi", "234", 22);
-        list.add("Asep", "567", 15);
-        list.add("Adi", "890", 12);
-        list.add("qiqi", "334", 9);
-        list.add("intan", "775", 3);
-        list.add("yudi", "062", 25);
+        list.add("Wadis", "123", 10, 30);
+        list.add("Irfan", "456", 18, 54);
+        list.add("Farid", "789", 17, 51);
+        list.add("Ocha", "012", 11, 33);
+        list.add("Budi", "345", 5, 15);
+        list.add("Kanda", "678", 16, 48);
+        list.add("Rayan", "901", 8, 24);
+        list.add("Rafi", "234", 14, 42);
+        list.add("Asep", "567", 15, 45);
+        list.add("Adi", "890", 12, 36);
+        list.add("qiqi", "334", 9, 27);
+        list.add("intan", "775", 3, 9);
+        list.add("yudi", "062", 18, 54);
 
         System.out.println("+------------------------------------------+");
-        System.out.println("|**************SISTEM KAMPUSIN*************|");
+        System.out.println("|************* SISTEM KAMPUSIN ************|");
         System.out.println("+------------------------------------------+");
         System.out.println("Daftar Mahasiswa:");
         list.printAll();
@@ -26,7 +26,15 @@ public class Main {
         System.out.println("\nDaftar Mahasiswa Setelah Diurutkan Berdasarkan Jarak:");
         list.printAll();
 
-        // add edge
+        System.out.println("\nDaftar Mahasiswa Sebelum Diurutkan Berdasarkan Waktu Sampai:");
+        list.printAll();
+
+        list.sortByWaktuSampai();
+
+        System.out.println("\nDaftar Mahasiswa Setelah Diurutkan Berdasarkan Waktu Sampai:");
+        list.printAll();
+
+
         list.addEdge("456", "123", 1);
         list.addEdge("123", "789", 2);
         list.addEdge("345", "123", 3);

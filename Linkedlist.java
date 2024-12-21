@@ -2,8 +2,8 @@ public class Linkedlist {
     Node head, tail;
     Edge edgeHead = null;
 
-    public void add(String nama, String nim, int jarak) {
-        Node newNode = new Node(nama, nim, jarak);
+    public void add(String nama, String nim, int jarak, int waktuSampai) {
+        Node newNode = new Node(nama, nim, jarak, waktuSampai);
         if (head == null) {
             head = tail = newNode;
         } else {
@@ -11,6 +11,37 @@ public class Linkedlist {
             newNode.prev = tail;
             tail = newNode;
         }
+    }
+
+    public void sortingJarak() {
+        if (head == null || head.next == null) return;
+
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = head;
+            while (current.next != null) {
+                if (current.jarak > current.next.jarak) {
+                    String tempName = current.nama;
+                    String tempNim = current.nim;
+                    int tempJarak = current.jarak;
+                    int tempWaktu = current.waktuSampai;
+
+                    current.nama = current.next.nama;
+                    current.nim = current.next.nim;
+                    current.jarak = current.next.jarak;
+                    current.waktuSampai = current.next.waktuSampai;
+
+                    current.next.nama = tempName;
+                    current.next.nim = tempNim;
+                    current.next.jarak = tempJarak;
+                    current.next.waktuSampai = tempWaktu;
+
+                    swapped = true;
+                }
+                current = current.next;
+            }
+        } while (swapped);
     }
 
     public void addEdge(String fromNim, String toNim, int weight) {
@@ -77,18 +108,18 @@ public class Linkedlist {
             return;
         }
 
-        System.out.println("+-----------------+------------+------------+");
-        System.out.printf("| %-15s | %-10s | %-10s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)");
-        System.out.println("+-----------------+------------+------------+");
+        System.out.println("+-----------------+------------+------------+----------------------+");
+        System.out.printf("| %-15s | %-10s | %-10s | %-12s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)", "Waktu Sampai (menit)");
+        System.out.println("+-----------------+------------+------------+----------------------+");
         Node temp = head;
         while (temp != null) {
-            System.out.printf("| %-15s | %-10s | %-10d |\n", temp.nama, temp.nim, temp.jarak);
+            System.out.printf("| %-15s | %-10s | %-10d | %-20d |\n", temp.nama, temp.nim, temp.jarak, temp.waktuSampai);
             temp = temp.next;
         }
-        System.out.println("+-----------------+------------+------------+");
+        System.out.println("+-----------------+------------+------------+----------------------+");
     }
 
-    public void sortingJarak() {
+    public void sortByWaktuSampai() {
         if (head == null || head.next == null) return;
 
         boolean swapped;
@@ -96,18 +127,21 @@ public class Linkedlist {
             swapped = false;
             Node current = head;
             while (current.next != null) {
-                if (current.jarak > current.next.jarak) {
+                if (current.waktuSampai > current.next.waktuSampai) {
                     String tempName = current.nama;
                     String tempNim = current.nim;
                     int tempJarak = current.jarak;
+                    int tempWaktu = current.waktuSampai;
 
                     current.nama = current.next.nama;
                     current.nim = current.next.nim;
                     current.jarak = current.next.jarak;
+                    current.waktuSampai = current.next.waktuSampai;
 
                     current.next.nama = tempName;
                     current.next.nim = tempNim;
                     current.next.jarak = tempJarak;
+                    current.next.waktuSampai = tempWaktu;
 
                     swapped = true;
                 }
@@ -141,4 +175,4 @@ public class Linkedlist {
         }
         System.out.println("+-----------------+-------------+-----------+");
     }
-}    
+}
