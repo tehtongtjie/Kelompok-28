@@ -2,8 +2,8 @@ public class Linkedlist {
     Node head, tail;
     Edge edgeHead = null;
 
-    public void add(String nama, String nim, int jarak) {
-        Node newNode = new Node(nama, nim, jarak);
+    public void add(String nama, String nim, int jarak, int waktu) {
+        Node newNode = new Node(nama, nim, jarak, waktu);
         if (head == null) {
             head = tail = newNode;
         } else {
@@ -77,15 +77,15 @@ public class Linkedlist {
             return;
         }
 
-        System.out.println("+-----------------+------------+------------+");
-        System.out.printf("| %-15s | %-10s | %-10s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)");
-        System.out.println("+-----------------+------------+------------+");
+        System.out.println("+-----------------+------------+---------------+--------------+");
+        System.out.printf("| %-15s | %-10s | %-10s | %-16s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)", "Waktu (menit)");
+        System.out.println("+-----------------+------------+---------------+--------------+");
         Node temp = head;
         while (temp != null) {
-            System.out.printf("| %-15s | %-10s | %-10d |\n", temp.nama, temp.nim, temp.jarak);
+            System.out.printf("| %-15s | %-10s | %-10d | %-16d |\n", temp.nama, temp.nim, temp.jarak, temp.waktu);
             temp = temp.next;
         }
-        System.out.println("+-----------------+------------+------------+");
+        System.out.println("+-----------------+------------+---------------+--------------+");
     }
 
     public void sortingJarak() {
@@ -100,14 +100,17 @@ public class Linkedlist {
                     String tempName = current.nama;
                     String tempNim = current.nim;
                     int tempJarak = current.jarak;
+                    int tempWaktu = current.waktu;
 
                     current.nama = current.next.nama;
                     current.nim = current.next.nim;
                     current.jarak = current.next.jarak;
+                    current.waktu = current.next.waktu;
 
                     current.next.nama = tempName;
                     current.next.nim = tempNim;
                     current.next.jarak = tempJarak;
+                    current.next.waktu = tempWaktu;
 
                     swapped = true;
                 }
@@ -129,16 +132,21 @@ public class Linkedlist {
 
     public void printEdges() {
         Edge tempEdge = edgeHead;
-        System.out.println("+-----------------+------------+------------+");
-        System.out.printf("| %-15s | %-10s | %-10s |\n", "Dari", "Ke", "Jarak (km)");
-        System.out.println("+-----------------+------------+------------+");
+        // Menampilkan header tabel dengan kolom yang lebih ringkas
+        System.out.println("+---------------+----------+----------+------------------+");
+        System.out.printf("| %-13s | %-8s | %-8s | %-16s |\n", "Dari", "Ke", "Jarak", "Waktu (menit)");
+        System.out.println("+---------------+----------+----------+------------------+");
+        
+        // Menampilkan setiap edge
         while (tempEdge != null) {
-            System.out.printf("| %-15s | %-11s| %-11d|\n",
-            tempEdge.from.nama,
-            tempEdge.to.nama,
-            tempEdge.weight);
+            System.out.printf("| %-13s | %-8s | %-8d | %-16d |\n",
+                tempEdge.from.nama, 
+                tempEdge.to.nama,
+                tempEdge.weight,
+                tempEdge.to.waktu
+            );
             tempEdge = tempEdge.nextEdge;
         }
-        System.out.println("+-----------------+-------------+-----------+");
+        System.out.println("+---------------+----------+----------+------------------+");
     }
-}    
+}
