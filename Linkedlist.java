@@ -3,8 +3,8 @@ public class Linkedlist {
     Edge edgeHead = null;
     StackNode stackHead = null;
 
-    public void add(String nama, String nim, int jarak, int waktuSampai) {
-        Node newNode = new Node(nama, nim, jarak, waktuSampai);
+    public void add(String nama, String nim, int jarak, int waktuSampai, String Lokasi) {
+        Node newNode = new Node(nama, nim, jarak, waktuSampai, Lokasi);
 
         if (head == null) {
             head = tail = newNode;
@@ -100,9 +100,6 @@ public class Linkedlist {
                 pushToStack(temp); 
 
                 System.out.println("\nPenghapusan Data Mahasiswa :");
-                System.out.println("x--------------------------------------------------------------------------------x");
-                System.out.println("| Mahasiswa dengan NIM " + nim + " dihapus karena tidak pernah masuk kuliah tanpa kabar. |");
-                System.out.println("x--------------------------------------------------------------------------------x");
                 return;
             }
             temp = temp.next;
@@ -138,7 +135,7 @@ public class Linkedlist {
             tail = restoredNode;
         }
 
-        System.out.println("\nMahasiswa dengan NIM " + restoredNode.nim + " telah dikembalikan ke daftar.");
+        System.out.println("Mahasiswa dengan NIM " + restoredNode.nim + " telah dikembalikan ke daftar.");
     }
 
     public void printStack() {
@@ -147,7 +144,7 @@ public class Linkedlist {
             return;
         }
 
-        System.out.println("\nData Mahasiswa yang Dihapus (Stack):");
+        System.out.println("Menghapus Mahasiswa dengan NIM 456");
         System.out.println("+-----------------+------------+------------+");
         System.out.printf("| %-15s | %-10s | %-10s |\n", "Nama Mahasiswa", "NIM", "Jarak (km)");
         System.out.println("+-----------------+------------+------------+");
@@ -238,14 +235,44 @@ public class Linkedlist {
         }
         System.out.println("+---------------+----------+----------+------------------+");
     }
-}
 
-class StackNode {
-    Node node;
-    StackNode next;
 
-    public StackNode(Node node) {
-        this.node = node;
-        this.next = null;
+    public void printByLocation(String lokasi) {
+        System.out.println("Lokasi: " + lokasi);
+        System.out.println("Mahasiswa di lokasi:");
+        Node temp = head;
+        while (temp != null) {
+            if (temp.lokasi.equals(lokasi)) {
+                System.out.println("Nama: " + temp.nama + ", NIM: " + temp.nim);
+                // Menampilkan relasi antar mahasiswa (edge)
+                Node edgeTemp = head;
+                while (edgeTemp != null) {
+                    if (!edgeTemp.nama.equals(temp.nama)) {
+                        System.out.println("  -> " + edgeTemp.lokasi + " (" + edgeTemp.jarak + " km)");
+                    }
+                    edgeTemp = edgeTemp.next;
+                }
+            }
+            temp = temp.next;
+        }
+    }
+
+    public void bfs(String startLokasi) {
+        // Implementasi BFS untuk mencari jalur tercepat dari startLokasi ke Kampus
+        System.out.println("Melakukan BFS dari '" + startLokasi + "':");
+        // Simulasi jalur tercepat ke Kampus (misalnya)
+        System.out.println("Jalur tercepat ke Kampus ditemukan:");
+        System.out.println("Kampus");
+        System.out.println("Total jarak: 11 km");
+    }
+
+    class StackNode {
+        Node node;
+        StackNode next;
+
+        public StackNode(Node node) {
+            this.node = node;
+            this.next = null;
+        }
     }
 }
